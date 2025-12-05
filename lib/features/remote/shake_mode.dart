@@ -4,7 +4,7 @@ import 'package:vibration/vibration.dart';
 class ShakeMode {
   /// 진동 실행
   /// [duration] 진동 지속 시간 (밀리초), 기본값 100ms
-  static Future<void> vibrate({int duration = 100}) async {
+  static Future<void> vibrate({int duration = 500}) async {
     if (await Vibration.hasVibrator() ?? false) {
       Vibration.vibrate(duration: duration);
     }
@@ -15,4 +15,3 @@ class ShakeMode {
     return await Vibration.hasVibrator() ?? false;
   }
 }
-

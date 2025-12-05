@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../remote/remote_home_page.dart';
+import '../remote/remote_pad.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -34,22 +35,22 @@ class HomePage extends StatelessWidget {
                     children: [
                       // 상단 헤더: 원포인트 홈
                       _TopHeader(),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 20),
                       // 홈 위치 설정 섹션
                       _HomeLocationSection(),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 20),
                       // 실시간 자막 설정 섹션
                       _SubtitleSection(),
-                      const SizedBox(height: 60),
+                      const SizedBox(height: 40),
                       // 즐겨 찾는 제품 섹션
                       _FavoriteProductsSection(),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 20),
                       // ThinQ PLAY 섹션
                       _ThinQPlaySection(),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 20),
                       // 스마트 루틴 섹션
                       _SmartRoutineSection(),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 20),
                       // Thin Q 활용하기 섹션
                       _ThinQUtilizationSection(),
                     ],
@@ -211,13 +212,13 @@ class _HomeLocationSection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      width: 210.92,
+                      width: 210,
                       height: 41.99,
                       child: const Text(
                         '홈 위치를 설정하면 맞춤 정보와 기능을\n사용할 수 있어요.',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 14,
+                          fontSize: 12,
                           fontWeight: FontWeight.w500,
                           height: 1.29,
                           fontFamily: 'Pretendard',
@@ -244,19 +245,24 @@ class _HomeLocationSection extends StatelessWidget {
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        child: const Row(
+                        child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              '설정하기',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w500,
-                                height: 1.19,
-                                fontFamily: 'Pretendard',
+                            Flexible(
+                              child: Text(
+                                '설정하기',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.19,
+                                  fontFamily: 'Pretendard',
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                textAlign: TextAlign.center,
                               ),
                             ),
                           ],
@@ -327,10 +333,10 @@ class _SubtitleSection extends StatelessWidget {
                       width: 210.92,
                       height: 41.99,
                       child: const Text(
-                        '홈 위치를 설정하면 맞춤 정보와 기능을\n사용할 수 있어요.',
+                        '단순한 티비 시청을 넘어 말하는 이의\n감정과 음악 소리까 자막으로 느껴보세요',
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 14,
+                          fontSize: 12,
                           fontWeight: FontWeight.w500,
                           height: 1.29,
                           fontFamily: 'Pretendard',
@@ -359,19 +365,24 @@ class _SubtitleSection extends StatelessWidget {
                             borderRadius: BorderRadius.circular(15),
                           ),
                         ),
-                        child: const Row(
+                        child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              '실시간 자막 설정하기',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w500,
-                                height: 1.19,
-                                fontFamily: 'Pretendard',
+                            Flexible(
+                              child: Text(
+                                '실시간 자막 설정하기',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.19,
+                                  fontFamily: 'Pretendard',
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                textAlign: TextAlign.center,
                               ),
                             ),
                           ],
@@ -412,21 +423,31 @@ class _FavoriteProductsSection extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: 120,
-                height: 54.59,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF434343),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Center(
-                  child: Container(
-                    width: 30,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(4),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const RemotePad()),
+                  );
+                },
+                child: Container(
+                  width: 120,
+                  height: 54.59,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF434343),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Center(
+                    child: Container(
+                      width: 30,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Image.asset(
+                        'assets/tv_icon.png',
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                    child: Image.asset('assets/tv_icon.png', fit: BoxFit.cover),
                   ),
                 ),
               ),
@@ -488,7 +509,7 @@ class _ThinQPlaySection extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 4),
+            const SizedBox(width: 3),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(left: 10, top: 15.52),
@@ -511,7 +532,7 @@ class _ThinQPlaySection extends StatelessWidget {
                       '앱을 다운로드하여 제품과 공간을 업그레이드해보세요.',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 12,
+                        fontSize: 10,
                         fontWeight: FontWeight.w500,
                         letterSpacing: 0.48,
                         height: 1.19,
@@ -554,49 +575,7 @@ class _SmartRoutineSection extends StatelessWidget {
                     fontFamily: 'Pretendard',
                   ),
                 ),
-                Container(
-                  width: 39,
-                  height: 39,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 1.95,
-                        top: 1.95,
-                        child: Container(
-                          width: 36.075,
-                          height: 36.075,
-                          clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                left: 14.73,
-                                top: 7.63,
-                                child: Container(
-                                  width: 6.5,
-                                  height: 16.25,
-                                  decoration: ShapeDecoration(
-                                    shape: RoundedRectangleBorder(
-                                      side: const BorderSide(
-                                        width: 1,
-                                        color: Color(0xFFAA71CA),
-                                      ),
-                                      borderRadius: BorderRadius.circular(
-                                        54.17,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                Container(width: 39, height: 39),
               ],
             ),
           ),
@@ -701,6 +680,7 @@ class _BottomNavigationBar extends StatelessWidget {
               type: NavItemType.devices,
               label: '디바이스',
               isActive: false,
+
               imagePath: 'assets/device.png',
               // 이미지 경로 예시: imagePath: 'assets/devices_icon.png', activeImagePath: 'assets/devices_icon_active.png'
             ),
@@ -749,14 +729,14 @@ class _NavItem extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(width: 23, height: 23, child: _buildIcon()),
-        const SizedBox(height: 2),
+        const SizedBox(height: 1),
         Text(
           label,
           style: const TextStyle(
             color: Colors.white,
             fontSize: 12,
             fontWeight: FontWeight.w500,
-            height: 1.19,
+            height: 2, //이미지와 글자 간격
             fontFamily: 'Pretendard',
           ),
         ),
@@ -765,7 +745,7 @@ class _NavItem extends StatelessWidget {
   }
 
   Widget _buildIcon() {
-    // 이미지 경로가 제공된 경우 이미지 사용
+    // 활성 상태이고 activeImagePath가 있으면 우선 사용
     if (isActive && activeImagePath != null) {
       return Image.asset(
         activeImagePath!,
@@ -773,7 +753,10 @@ class _NavItem extends StatelessWidget {
         height: 23,
         fit: BoxFit.contain,
       );
-    } else if (!isActive && imagePath != null) {
+    }
+
+    // imagePath가 있으면 사용 (활성/비활성 모두)
+    if (imagePath != null) {
       return Image.asset(
         imagePath!,
         width: 23,
