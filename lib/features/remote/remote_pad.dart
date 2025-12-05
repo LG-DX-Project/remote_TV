@@ -359,12 +359,6 @@ class _RemotePadState extends State<RemotePad> {
     }
   }
 
-  void _handleHome() {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text('홈 버튼이 눌렀습니다.')));
-  }
-
   void _handleTV() {
     ScaffoldMessenger.of(
       context,
